@@ -1,0 +1,36 @@
+@import '../../_variables.scss';
+
+.header {
+  display: flex;
+  height: 58px;
+  gap: 48px;
+  padding: 8px 8%;
+  align-items: center;
+  background-color: $secondary-color;
+}
+
+.logo {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  gap: 16px;
+  flex-grow: 1;
+
+  a {
+    color: $primary-color;
+    text-decoration: none;
+  }
+
+}
+
+.login {
+  display: flex;
+  gap: 16px;
+  min-width: 0;
+
+}

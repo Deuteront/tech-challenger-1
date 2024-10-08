@@ -4,6 +4,10 @@ import React, { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { parseCookies } from 'nookies'
 
+import './style.scss'
+import { Header } from '@/app/home/header/header'
+import { Body } from '@/app/home/body/body'
+
 const Home: React.FC = () => {
   const router = useRouter()
 
@@ -15,11 +19,9 @@ const Home: React.FC = () => {
   }, [router])
 
   return (
-    <div>
-      <h1>Bem-vindo ao nosso site!</h1>
-      <p>
-        <a href="/login">Faça login</a> para acessar recursos protegidos.
-      </p>
+    <div className="home">
+      <Header></Header>
+      <Body></Body>
     </div>
   )
 }

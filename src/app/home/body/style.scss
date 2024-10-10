@@ -3,11 +3,19 @@
 .body {
   display: flex;
   flex-direction: column;
+}
+
+.initial-scream {
+  display: flex;
+  width: 100vw;
+  height: calc(100vh - 74px);
+  flex-direction: column;
   gap: 64px;
+  z-index: 1;
 }
 
 .container-invite {
-  margin: 64px 30%;
+  padding: 64px 30%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,44 +44,58 @@
     }
   }
 
-
   .cat-paw {
     position: absolute;
-    background: url('/svgs/cat.png');
-    right: 0;
-    bottom: 0;
-    transform: translate(50%, 60%);
+    background: url(/svgs/cat.png);
+    right: 21%;
+    top: 33%;
+    z-index: -1;
+  }
+
+}
+
+.wave {
+  flex: 1;
+  position: relative;
+  width: 100%;
+  background: url('/svgs/wave_login.svg') top repeat-x;
+  padding-top: 50px;
+
+  .wave-login {
+    height: 100%;
+    width: -webkit-fill-available;
+    background-color: $border-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .has-login {
+      color: #28262B;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 120%;
+    }
+
+    .login {
+      color: #381926;
+      text-align: center;
+      font-size: var(--Label-Large-Size, 14px);
+      font-style: normal;
+      font-weight: 500;
+      line-height: var(--Label-Large-Line-Height, 20px);
+      letter-spacing: var(--Label-Large-Tracking, 0.1px);
+      text-decoration-line: underline;
+    }
+
+
   }
 }
 
-.wave-login {
-  height: 276px;
-  width: -webkit-fill-available;
-  background: url('/svgs/wave_login.svg') bottom;
+.advantage-list {
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  z-index: 1;
-
-  .has-login {
-    color: #28262B;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 120%;
-  }
-
-  .login {
-    color: #381926;
-    text-align: center;
-    font-size: var(--Label-Large-Size, 14px);
-    font-style: normal;
-    font-weight: 500;
-    line-height: var(--Label-Large-Line-Height, 20px);
-    letter-spacing: var(--Label-Large-Tracking, 0.1px);
-    text-decoration-line: underline;
-  }
-
-
+  padding: 64px 0;
+  gap: 24px;
 }

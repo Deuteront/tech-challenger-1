@@ -1,29 +1,31 @@
-'use client'
+'use client';
 
-import React, { useEffect } from 'react'
-import { useRouter } from 'next/navigation'
-import { parseCookies } from 'nookies'
+import React, { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { parseCookies } from 'nookies';
 
-import './style.scss'
-import { Header } from '@/app/home/header/header'
-import { Body } from '@/app/home/body/body'
+import './style.scss';
+import { Header } from '@/app/home/header/header';
+import { Body } from '@/app/home/body/body';
+import { Footer } from '@/app/home/footer/footer';
 
 const Home: React.FC = () => {
-  const router = useRouter()
+  const router = useRouter();
 
   useEffect(() => {
-    const cookies = parseCookies()
+    const cookies = parseCookies();
     if (cookies.auth) {
-      router.push('/dashboard')
+      router.push('/dashboard');
     }
-  }, [router])
+  }, [router]);
 
   return (
     <div className="home">
-      <Header></Header>
-      <Body></Body>
+      <Header />
+      <Body />
+      <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

@@ -1,0 +1,42 @@
+@import '../../app/variables';
+
+
+.advantage {
+  display: flex;
+  width: 277.318px;
+  height: 325.315px;
+  padding: 28.443px;
+  flex-direction: column;
+  align-items: center;
+  gap: 14.221px;
+  flex-shrink: 0;
+  border-radius: 7.111px;
+  border: 3.555px solid $border-color;
+
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #AB5373;
+    text-align: center;
+    font-size: 24.887px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+  }
+
+  .image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
+  }
+}

@@ -1,8 +1,8 @@
 import React from 'react';
 import './style.scss';
-import { Logo } from '@/components/logo/logo';
+import { Logo } from '@/components/body/logo/logo';
 import Image from 'next/image';
-import { Button } from '@/components/button/button';
+import { Button } from '@/components/atoms/button/button';
 
 export function Footer() {
   return (

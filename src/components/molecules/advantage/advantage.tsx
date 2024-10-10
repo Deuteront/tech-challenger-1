@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.scss';
 import Image from 'next/image';
-import { props } from '@/components/advantage/advantage.type';
+import { props } from '@/components/molecules/advantage/advantage.type';
 
 export function Advantage({ image, text, icon }: props) {
   return (

@@ -1,10 +1,13 @@
 import React from 'react';
 import './style.scss';
-import { Button } from '@/components/button/button';
+import { Button } from '@/components/atoms/button/button';
 import Image from 'next/image';
-import { AdvantageList } from '@/components/advantage/advantage-list';
+import { AdvantageList } from '@/components/molecules/advantage/advantage-list';
+import { useRouter } from 'next/navigation';
 
 export function Body() {
+  const router = useRouter();
+  const handleDashboard = () => router.push('/dashboard');
   const advantages = [
     {
       text: 'Relatórios e análises em tempo real',
@@ -30,11 +33,9 @@ export function Body() {
             <span className="title">
               Controle suas finanças na palma da sua pata.
             </span>
-            <span className="sub-title">Crie sua conta com a gente!</span>
+            <span className="sub-title">Inicie Agora!</span>
             <Button
-              onClick={() => {
-                console.log('faço nd');
-              }}
+              onClick={handleDashboard}
               className={['button', 'primary-button']}
               text="Começar agora"
             ></Button>
@@ -45,8 +46,10 @@ export function Body() {
         </div>
         <div className="wave">
           <div className="wave-login">
-            <span className="has-login">Já tem uma conta?</span>
-            <a className="login">Faça o login</a>
+            <span className="has-login">Vamos Começar?</span>
+            <a href="/dashboard" className="login">
+              Iniciar
+            </a>
           </div>
         </div>
       </div>

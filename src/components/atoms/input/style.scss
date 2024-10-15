@@ -1,0 +1,43 @@
+@import '../../../app/variables';
+
+
+.custom-input {
+  font-family: $custom-font;
+  background-color: $background-color;
+
+  .MuiOutlinedInput-root {
+    font-family: $custom-font;
+    color: $primary-color;
+
+    & fieldset {
+      border-color: #79747E;
+    }
+
+    &:hover fieldset {
+      border-color: #79747E;
+    }
+
+    &.Mui-focused fieldset {
+      border-color: #79747E;
+    }
+  }
+
+  .MuiInputLabel-root {
+    font-family: $custom-font;
+    color: #79747E;
+
+    &.Mui-focused {
+      color: #79747E;
+    }
+  }
+
+  .MuiInputBase-input::placeholder {
+    font-family: $custom-font;
+    color: #49454F;
+  }
+
+  input {
+    font-family: $custom-font;
+    color: #49454F;
+  }
+}

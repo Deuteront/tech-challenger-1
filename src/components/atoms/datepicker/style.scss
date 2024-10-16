@@ -1,0 +1,11 @@
+@import '../../../app/variables';
+
+.date-input {
+  padding: 10px;
+  border: 1px solid $primary-color;
+  border-radius: 5px;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  color: #333;
+}

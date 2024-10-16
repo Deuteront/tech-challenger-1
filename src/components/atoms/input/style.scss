@@ -3,41 +3,41 @@
 
 .custom-input {
   font-family: $custom-font;
-  background-color: $background-color;
+  background-color: $background-color !important;
 
   .MuiOutlinedInput-root {
-    font-family: $custom-font;
+    font-family: $custom-font !important;
     color: $primary-color;
 
     & fieldset {
-      border-color: #79747E;
+      border-color: $border-color;
     }
 
     &:hover fieldset {
-      border-color: #79747E;
+      border-color: $primary-color;
     }
 
     &.Mui-focused fieldset {
-      border-color: #79747E;
+      border-color: $primary-color;
     }
   }
 
   .MuiInputLabel-root {
-    font-family: $custom-font;
-    color: #79747E;
+    font-family: $custom-font !important;
+    color: $primary-color;
 
     &.Mui-focused {
-      color: #79747E;
+      color: $primary-color;
     }
   }
 
   .MuiInputBase-input::placeholder {
     font-family: $custom-font;
-    color: #49454F;
+    color: #79747E !important;
   }
 
   input {
-    font-family: $custom-font;
-    color: #49454F;
+    font-family: $custom-font !important;
+    color: #79747E;
   }
 }

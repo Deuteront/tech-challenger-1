@@ -1,11 +1,116 @@
 @import '../../../app/variables';
 
-.select {
-  padding: 10px;
-  border: 1px solid $primary-color;
-  border-radius: 5px;
-  width: 100%;
-  font-family: "Poppins", sans-serif;
-  font-size: 14px;
-  color: #333;
+.custom-form-control {
+  font-family: $custom-font;
+  background-color: $background-color !important;
+
+  & .MuiOutlinedInput-root {
+    font-family: $custom-font !important;
+    color: $primary-color;
+
+    & fieldset {
+      border-color: $border-color;
+      border-width: 1px;
+    }
+
+    &:hover fieldset {
+      border-color: $primary-color;
+    }
+
+    &.Mui-focused fieldset {
+      border-color: $primary-color;
+      box-shadow: none;
+    }
+  }
+
+  .MuiInputLabel-root {
+    font-family: $custom-font !important;
+    color: $primary-color;
+
+    &.Mui-focused {
+      color: $primary-color;
+    }
+  }
+
+  .MuiSelect-select {
+    font-family: $custom-font !important;
+    color: $primary-color;
+
+    &:focus {
+      background-color: $secondary-color;
+    }
+  }
+}
+
+.custom-select {
+  font-family: $custom-font;
+  background-color: $background-color !important;
+
+  .MuiOutlinedInput-root {
+    font-family: $custom-font !important;
+    color: $primary-color;
+
+    & fieldset {
+      border-color: $border-color;
+    }
+
+    &:hover fieldset {
+      border-color: $primary-color;
+    }
+
+    &.Mui-focused fieldset {
+      border-color: $primary-color;
+    }
+  }
+
+  .MuiInputLabel-root {
+    font-family: $custom-font !important;
+    color: $primary-color;
+
+    &.Mui-focused {
+      color: $primary-color;
+    }
+  }
+
+  .MuiSelect-select {
+    font-family: $custom-font !important;
+    color: $primary-color;
+
+    &:hover {
+      background-color: lighten($secondary-color, 5%);
+    }
+  }
+
+  .MuiInputBase-input {
+    font-family: $custom-font !important;
+    color: #79747E;
+
+    &::placeholder {
+      color: #79747E !important;
+    }
+  }
+
+  .MuiMenuItem-root {
+    font-family: $custom-font;
+    color: $primary-color;
+    background-color: $secondary-color;
+
+    &:hover {
+      background-color: $primary-color;
+      color: #FFFFFF;
+    }
+
+    &.Mui-selected {
+      background-color: darken($primary-color, 10%);
+      color: #FFFFFF;
+    }
+  }
+
+  .MuiSelect-icon {
+    color: $primary-color;
+  }
+
+  .MuiFormControl-root {
+    width: 100%;
+  }
 }

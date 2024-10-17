@@ -1,12 +1,14 @@
+import { SelectChangeEvent } from '@mui/material';
+import { ReactNode } from 'react';
+
 export type Option = {
-    value: string;
-    label: string;
-  };
-  
-  export type props = {
-    value: string;
-    onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-    options: Option[];
-    className: string[];
-  }
-  
+  value: string;
+  text: string;
+};
+
+export type props = {
+  value: string;
+  onChange: (event: SelectChangeEvent, child: ReactNode) => void;
+  options: Option[];
+  label: string;
+};

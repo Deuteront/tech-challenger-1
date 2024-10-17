@@ -3,15 +3,24 @@ import { props } from '@/components/atoms/input/input.type';
 import './style.scss';
 import { TextField } from '@mui/material';
 
-export function Input({ label, value, onChange }: props) {
+export function Input({
+  label,
+  value,
+  onChange,
+  error,
+  helperText,
+  className,
+}: props) {
   return (
     <TextField
-      className="custom-input"
+      className={'custom-input ' + className}
       label={label}
       variant="outlined"
       value={value}
       onChange={onChange}
       fullWidth
+      error={error}
+      helperText={helperText}
     />
   );
 }

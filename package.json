@@ -9,17 +9,22 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.13.3",
-    "@emotion/styled": "^11.13.0",
+    "@emotion/react": "11.13.3",
+    "@emotion/styled": "11.13.0",
     "@mui/material": "^6.1.4",
+    "@mui/x-date-pickers": "^7.20.0",
+    "@react-input/mask": "^1.2.11",
     "bootstrap": "5.3.3",
     "cookie": "0.6.0",
+    "date-fns": "^4.1.0",
+    "dayjs": "^1.11.13",
     "jsonwebtoken": "^9.0.2",
-    "next": "^14.2.13",
+    "next": "14.2.13",
     "nookies": "2.5.2",
     "react": "18",
     "react-dom": "18",
-    "sass": "^1.79.4"
+    "react-input-mask": "2.0.4",
+    "sass": "1.79.4"
   },
   "devDependencies": {
     "@types/cookie": "0.6.0",
@@ -28,9 +33,9 @@
     "@types/nookies": "1.1.0",
     "@types/react": "18",
     "@types/react-dom": "18",
-    "@typescript-eslint/eslint-plugin": "5.0.0",
-    "@typescript-eslint/parser": "5.0.0",
-    "eslint": "8.1.0",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "eslint": "^8.57.1",
     "eslint-config-next": "14.2.13",
     "prettier": "3.3.3",
     "typescript": "5"

@@ -1,7 +1,5 @@
 export type props = {
-    value: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    placeholder?: string;
-    className: string[];
-  }
-  
+  onChange: () => void;
+  label: string;
+  value?: string;
+};

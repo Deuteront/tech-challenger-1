@@ -1,15 +1,43 @@
 @import '../../../app/variables';
 
-.input {
-  padding: 10px;
-  border: 1px solid $primary-color;
-  border-radius: 5px;
-  width: 100%;
-  font-family: "Poppins", sans-serif;
-  font-size: 14px;
-  color: #333;
-}
 
-.error {
-  border: 1px solid red;
+.custom-input {
+  font-family: $custom-font;
+  background-color: $background-color;
+
+  .MuiOutlinedInput-root {
+    font-family: $custom-font;
+    color: $primary-color;
+
+    & fieldset {
+      border-color: #79747E;
+    }
+
+    &:hover fieldset {
+      border-color: #79747E;
+    }
+
+    &.Mui-focused fieldset {
+      border-color: #79747E;
+    }
+  }
+
+  .MuiInputLabel-root {
+    font-family: $custom-font;
+    color: #79747E;
+
+    &.Mui-focused {
+      color: #79747E;
+    }
+  }
+
+  .MuiInputBase-input::placeholder {
+    font-family: $custom-font;
+    color: #49454F;
+  }
+
+  input {
+    font-family: $custom-font;
+    color: #49454F;
+  }
 }

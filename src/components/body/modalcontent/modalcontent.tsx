@@ -48,7 +48,7 @@ const ModalContent: React.FC<ModalContentProps> = ({ closeModal }) => {
           <h2>Qual é o valor da transação?</h2>
           <Input
             value={transactionData.value}
-            onChange={(e) => setTransactionData({ ...transactionData, value: e.target.value })}
+            onChange={(e) => {setTransactionData({ ...transactionData, value: e.target.value })}}
             placeholder="R$ 0,00"
             className={['input']}
           />

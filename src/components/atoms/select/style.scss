@@ -1,77 +1,7 @@
 @import '../../../app/variables';
 
-.custom-form-control {
-  font-family: $custom-font;
-  background-color: $background-color !important;
 
-  & .MuiOutlinedInput-root {
-    font-family: $custom-font !important;
-    color: $primary-color;
-
-    & fieldset {
-      border-color: $border-color;
-      border-width: 1px;
-    }
-
-    &:hover fieldset {
-      border-color: $primary-color;
-    }
-
-    &.Mui-focused fieldset {
-      border-color: $primary-color;
-      box-shadow: none;
-    }
-  }
-
-  .MuiInputLabel-root {
-    font-family: $custom-font !important;
-    color: $primary-color;
-
-    &.Mui-focused {
-      color: $primary-color;
-    }
-  }
-
-  .MuiSelect-select {
-    font-family: $custom-font !important;
-    color: $primary-color;
-
-    &:focus {
-      background-color: $secondary-color;
-    }
-  }
-}
-
-.custom-select {
-  font-family: $custom-font;
-  background-color: $background-color !important;
-
-  .MuiOutlinedInput-root {
-    font-family: $custom-font !important;
-    color: $primary-color;
-
-    & fieldset {
-      border-color: $border-color;
-    }
-
-    &:hover fieldset {
-      border-color: $primary-color;
-    }
-
-    &.Mui-focused fieldset {
-      border-color: $primary-color;
-    }
-  }
-
-  .MuiInputLabel-root {
-    font-family: $custom-font !important;
-    color: $primary-color;
-
-    &.Mui-focused {
-      color: $primary-color;
-    }
-  }
-
+.MuiFormControl-root {
   .MuiSelect-select {
     font-family: $custom-font !important;
     color: $primary-color;

@@ -5,7 +5,7 @@ import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
 export function CustomSelect({ value, onChange, options, label }: props) {
   return (
-    <FormControl fullWidth className="custom-form-control">
+    <FormControl fullWidth>
       <InputLabel>{label}</InputLabel>
       <Select
         value={value}

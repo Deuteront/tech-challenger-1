@@ -25,10 +25,10 @@ const NavigationButtons: React.FC<NavigationButtonsProps> = ({
           </button>
         )}
       {isFirstStep && ( // Exibe o botão "Fechar" apenas se estiver na primeira tela
-          <button className="button" onClick={closeModal}>
-            Fechar
-          </button>
-        )}
+        <button className="button" onClick={closeModal}>
+          Fechar
+        </button>
+      )}
       {/* Condicional para não renderizar o botão "Avançar" se estiver na última etapa */}
       {!isLastStep && (
         <button className="button" onClick={handleNext}>
@@ -37,7 +37,7 @@ const NavigationButtons: React.FC<NavigationButtonsProps> = ({
       )}
 
       {/* Se estiver na última etapa, o botão exibido será "Fechar" */}
-      { isLastStep && (
+      {isLastStep && (
         <button className="button" onClick={handleNext}>
           Fechar
         </button>

@@ -7,32 +7,34 @@
 }
 
 .modal {
-  background-color: $background-color; 
-  border-radius: 28px; 
-  padding: 20px; 
+  background-color: $background-color;
+  border-radius: 28px;
+  padding: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   max-width: 424px;
-  margin: auto; 
+  margin: auto;
   color: #1D1B20;
-  
+
 }
 
 .button {
   background-color: transparent;
-  border: none; 
+  border: none;
   color: $primary-color;
-  cursor: pointer; 
+  cursor: pointer;
   padding: 10px 15px;
-  font-size: 16px; 
+  font-size: 16px;
   border-radius: 22px;
 }
+
 h2 {
-  font-weight: 300; 
+  font-weight: 300;
 }
+
 .button:hover {
   background-color: $nav-button-hover;
 }
 
-.button:active{
+.button:active {
   background-color: $nav-button-pressed;
 }

@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import { CustomSelect } from '@/components/atoms/select/select';
 import { CustomDatePicker } from '@/components/atoms/datepicker/datepicker';
-import NavigationButtons from '@/components/molecules/navigationbuttons/navigationbuttons';
+import NavigationButtons from '@/components/molecules/navigation-buttons/navigation-buttons';
 import './style.scss';
 import { InputCurrency } from '@/components/molecules/input-currency/input-currency';
 import { initialTransactionData, handleNext, handlePrev } from './constants';
-
 
 interface ModalContentProps {
   closeModal: () => void;
 }
 
-
 const ModalTransaction: React.FC<ModalContentProps> = ({ closeModal }) => {
   const [step, setStep] = useState(0);
-  const [transactionData, setTransactionData] = useState(initialTransactionData);
- 
+  const [transactionData, setTransactionData] = useState(
+    initialTransactionData
+  );
+
   return (
     <div className="modal">
       {step === 0 && (
@@ -98,8 +98,10 @@ const ModalTransaction: React.FC<ModalContentProps> = ({ closeModal }) => {
 
       <NavigationButtons
         closeModal={closeModal}
-        handleNext={() => handleNext(step, setStep, transactionData, closeModal)}
-  handlePrev={() => handlePrev(step, setStep)}
+        handleNext={() =>
+          handleNext(step, setStep, transactionData, closeModal)
+        }
+        handlePrev={() => handlePrev(step, setStep)}
         isLastStep={step === 2}
         isFirstStep={step === 0}
       />

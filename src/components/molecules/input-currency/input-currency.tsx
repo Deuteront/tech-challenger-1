@@ -8,7 +8,7 @@ interface InputCurrencyProps {
 }
 
 export function InputCurrency({ label, value, onChange }: InputCurrencyProps) {
-  const [initialized, setInitialized] = useState(false); // Controle para inicialização
+  const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
     if (!initialized && value === '') {
@@ -55,7 +55,7 @@ export function InputCurrency({ label, value, onChange }: InputCurrencyProps) {
       value={value}
       onChange={handleChange}
       error={error}
-      helperText={error ? 'Valor mínimo é R$ 0,10' : ''}
+      helperText={error ? 'Valor mínimo é R$ 0,01' : ''}
     />
   );
 }

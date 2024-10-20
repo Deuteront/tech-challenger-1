@@ -7,23 +7,13 @@ import { getFromStorage } from '@/utils/storage';
 import './style.scss';
 import { InputCurrency } from '@/components/molecules/input-currency/input-currency';
 import { Button } from '@/components/atoms/button/button';
-import { Dayjs } from 'dayjs';
+import { transaction } from '@/components/body/modal-transaction/modal-transaction.type';
+import { transactionsName } from '@/components/body/modal-transaction/constants';
 
 interface ModalContentProps {
   closeModal: () => void;
 }
 
-//TODO: Separar em um arquivo de type
-type transaction = {
-  value: string;
-  movement: string;
-  paymentMethod: string;
-  establishmentType: string;
-  transactionDate: Dayjs | null;
-};
-
-//TODO: Criar um arquivo para colocar as variaveis do stage
-const transactionsName = 'transactions';
 
 const ModalTransaction: React.FC<ModalContentProps> = ({ closeModal }) => {
   const [step, setStep] = useState(0);

@@ -1,8 +1,10 @@
 import React from 'react';
+import './style.scss';
 
 interface NavigationButtonsProps {
   handleNext: () => void;
   handlePrev: () => void;
+  closeModal: () => void;
   isLastStep: boolean;
   isFirstStep: boolean;
 }
@@ -10,6 +12,7 @@ interface NavigationButtonsProps {
 const NavigationButtons: React.FC<NavigationButtonsProps> = ({
   handleNext,
   handlePrev,
+  closeModal,
   isLastStep,
   isFirstStep,
 }) => {
@@ -21,7 +24,11 @@ const NavigationButtons: React.FC<NavigationButtonsProps> = ({
             Voltar
           </button>
         )}
-
+      {isFirstStep && ( // Exibe o botão "Fechar" apenas se estiver na primeira tela
+          <button className="button" onClick={closeModal}>
+            Fechar
+          </button>
+        )}
       {/* Condicional para não renderizar o botão "Avançar" se estiver na última etapa */}
       {!isLastStep && (
         <button className="button" onClick={handleNext}>
@@ -30,7 +37,7 @@ const NavigationButtons: React.FC<NavigationButtonsProps> = ({
       )}
 
       {/* Se estiver na última etapa, o botão exibido será "Fechar" */}
-      {isLastStep && (
+      { isLastStep && (
         <button className="button" onClick={handleNext}>
           Fechar
         </button>

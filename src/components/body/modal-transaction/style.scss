@@ -7,26 +7,32 @@
 }
 
 .modal {
-  background-color: $background-color; /* Cor de fundo do modal */
-  border-radius: 28px; /* Cantos arredondados */
-  padding: 20px; /* Espaçamento interno */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra do modal */
-  max-width: 424px; /* Largura máxima do modal */
-  margin: auto; /* Centraliza o modal */
-  color: #1D1B20; /* Cor do texto */
+  background-color: $background-color; 
+  border-radius: 28px; 
+  padding: 20px; 
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  max-width: 424px;
+  margin: auto; 
+  color: #1D1B20;
+  
 }
 
 .button {
-  background-color: transparent; /* Fundo transparente */
-  border: none; /* Sem borda */
-  color: $primary-color; /* Cor do texto em rosa */
-  cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
-  padding: 10px 15px; /* Espaçamento interno do botão */
-  font-size: 16px; /* Tamanho da fonte */
-  border-radius: 5px; /* Cantos arredondados dos botões */
+  background-color: transparent;
+  border: none; 
+  color: $primary-color;
+  cursor: pointer; 
+  padding: 10px 15px;
+  font-size: 16px; 
+  border-radius: 22px;
+}
+h2 {
+  font-weight: 300; 
+}
+.button:hover {
+  background-color: $nav-button-hover;
 }
 
-.button:hover {
-  text-decoration: underline; /* Efeito ao passar o mouse */
+.button:active{
+  background-color: $nav-button-pressed;
 }
-  

@@ -2,13 +2,10 @@ import React, { useState } from 'react';
 import { CustomSelect } from '@/components/atoms/select/select';
 import { CustomDatePicker } from '@/components/atoms/datepicker/datepicker';
 import NavigationButtons from '@/components/molecules/navigationbuttons/navigationbuttons';
-import { saveToStorage } from '@/utils/storage';
-import { getFromStorage } from '@/utils/storage';
 import './style.scss';
 import { InputCurrency } from '@/components/molecules/input-currency/input-currency';
-import { Button } from '@/components/atoms/button/button';
-import { transaction } from '@/components/body/modal-transaction/modal-transaction.type';
-import { transactionsName } from '@/components/body/modal-transaction/constants';
+import { initialTransactionData, handleNext, handlePrev } from './constants';
+
 
 interface ModalContentProps {
   closeModal: () => void;
@@ -17,34 +14,8 @@ interface ModalContentProps {
 
 const ModalTransaction: React.FC<ModalContentProps> = ({ closeModal }) => {
   const [step, setStep] = useState(0);
-  const [transactionData, setTransactionData] = useState<transaction>({
-    value: '',
-    movement: '',
-    paymentMethod: '',
-    establishmentType: '',
-    transactionDate: null,
-  });
-
-  const handleNext = () => {
-    if (step < 2) {
-      setStep(step + 1);
-    } else {
-      const transactionKey = transactionsName;
-      const storedTransactions =
-        (getFromStorage(transactionKey) as transaction[]) || [];
-
-      storedTransactions.push(transactionData);
-      saveToStorage(transactionKey, storedTransactions);
-      closeModal();
-    }
-  };
-
-  const handlePrev = () => {
-    if (step > 0) {
-      setStep(step - 1);
-    }
-  };
-
+  const [transactionData, setTransactionData] = useState(initialTransactionData);
+ 
   return (
     <div className="modal">
       {step === 0 && (
@@ -57,13 +28,6 @@ const ModalTransaction: React.FC<ModalContentProps> = ({ closeModal }) => {
               setTransactionData({ ...transactionData, value: e.target.value })
             }
           />
-          <div>
-            <Button
-              className={['button']}
-              onClick={closeModal}
-              text={'Fechar'}
-            ></Button>
-          </div>
         </div>
       )}
 
@@ -133,8 +97,9 @@ const ModalTransaction: React.FC<ModalContentProps> = ({ closeModal }) => {
       )}
 
       <NavigationButtons
-        handleNext={handleNext}
-        handlePrev={handlePrev}
+        closeModal={closeModal}
+        handleNext={() => handleNext(step, setStep, transactionData, closeModal)}
+  handlePrev={() => handlePrev(step, setStep)}
         isLastStep={step === 2}
         isFirstStep={step === 0}
       />

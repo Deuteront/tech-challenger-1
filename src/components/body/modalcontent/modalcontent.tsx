@@ -117,3 +117,4 @@ const ModalContent: React.FC<ModalContentProps> = ({ closeModal }) => {
 };
 
 export default ModalContent;
+

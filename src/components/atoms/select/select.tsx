@@ -1,15 +1,25 @@
 import React from 'react';
 import { props } from '@/components/atoms/select/select.type';
 import './style.scss';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
-export function Select({ value, onChange, options, className }: props) {
+export function CustomSelect({ value, onChange, options, label }: props) {
+  console.log(label);
   return (
-    <select value={value} onChange={onChange} className={className.join(' ')}>
-      {options.map((option, index) => (
-        <option key={index} value={option.value}>
-          {option.label}
-        </option>
-      ))}
-    </select>
+    <FormControl fullWidth className="custom-form-control">
+      <InputLabel>{label}</InputLabel>
+      <Select
+        value={value}
+        onChange={onChange}
+        label={label}
+        className="custom-select"
+      >
+        {options.map(({ value, text }, index) => (
+          <MenuItem key={index} value={value}>
+            {text}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
   );
 }

@@ -15,4 +15,12 @@
   gap: 16px;
   min-width: 0;
 
+  @media only screen and (max-width: $mobile_width) {
+    display: none;
+  }
+
+  @media only screen and (min-width: $mobile_width) and (max-width: $tablet_width) {
+    display: none;
+  }
+
 }

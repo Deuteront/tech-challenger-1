@@ -33,7 +33,6 @@ export function Body() {
             <span className="title">
               Controle suas finanças na palma da sua pata.
             </span>
-            <span className="sub-title">Inicie Agora!</span>
             <Button
               onClick={handleDashboard}
               className={['button', 'primary-button']}

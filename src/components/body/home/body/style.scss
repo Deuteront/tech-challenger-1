@@ -15,7 +15,7 @@
 }
 
 .container-invite {
-  padding: 64px 30%;
+  padding: 64px 10%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,10 +46,24 @@
 
   .cat-paw {
     position: absolute;
-    background: url(/svgs/cat.png);
     right: 21%;
     top: 33%;
     z-index: -1;
+
+    @media only screen and (max-width: $mobile_width) {
+      left: 50%;
+      top: 52%;
+    }
+
+    @media only screen and (max-width: 500px) {
+      left: 50%;
+      top: 55%;
+    }
+
+    @media only screen and (min-width: $mobile_width) and (max-width: $tablet_width) {
+      right: 8%;
+      top: 47%;
+    }
   }
 
 }
@@ -96,6 +110,9 @@
 .advantage-list {
   display: flex;
   justify-content: center;
-  padding: 64px 0;
+  padding: 64px 16px;
   gap: 24px;
+  @media only screen and (max-width: $mobile_width) {
+    flex-direction: column;
+  }
 }

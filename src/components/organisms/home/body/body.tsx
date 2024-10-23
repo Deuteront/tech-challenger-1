@@ -25,25 +25,32 @@ export function Body() {
       image: 'ad2',
     },
   ];
+
   return (
     <div className="body">
       <div className="initial-scream">
         <div className="container-invite">
-          <div className="invite">
-            <span className="title">
-              Controle suas finanças na palma da sua pata.
-            </span>
-            <Button
-              onClick={handleDashboard}
-              className={['button', 'primary-button']}
-              text="Começar agora"
-            ></Button>
-          </div>
-          <div className="cat-paw">
-            <Image src="/png/cat.png" alt="cat-paw" width="377" height="482" />
+          <div className="container">
+            <div className="row">
+              <div className="col-12">
+                <div className="invite">
+                  <span className="title">
+                    Controle suas finanças na palma da sua pata.
+                  </span>
+                  <Button
+                    onClick={handleDashboard}
+                    className={['button', 'primary-button']}
+                    text="Começar agora"
+                  ></Button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div className="wave">
+          <div className="cat-paw">
+            <Image src="/png/cat.png" alt="cat-paw" width="377" height="482" />
+          </div>
           <div className="wave-login">
             <span className="has-login">Vamos Começar?</span>
             <a href="/dashboard" className="login">

@@ -8,18 +8,22 @@
 .initial-scream {
   display: flex;
   width: 100vw;
-  height: calc(100vh - 74px);
+  height: calc(100vh - 54px);
   flex-direction: column;
   gap: 64px;
   z-index: 1;
+  @media only screen and (max-width: 400px) {
+    height: auto;
+  }
 }
 
 .container-invite {
-  padding: 64px 10%;
+  padding: 64px 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
+  flex: 1 1;
 
   .invite {
     display: flex;
@@ -44,43 +48,22 @@
     }
   }
 
-  .cat-paw {
-    position: absolute;
-    right: 21%;
-    top: 33%;
-    z-index: -1;
-
-    @media only screen and (max-width: $mobile_width) {
-      left: 50%;
-      top: 52%;
-    }
-
-    @media only screen and (max-width: 500px) {
-      left: 50%;
-      top: 55%;
-    }
-
-    @media only screen and (min-width: $mobile_width) and (max-width: $tablet_width) {
-      right: 8%;
-      top: 47%;
-    }
-  }
 
 }
 
 .wave {
-  flex: 1;
   position: relative;
   width: 100%;
   background: url('/svgs/wave_login.svg') top repeat-x;
   padding-top: 50px;
 
   .wave-login {
-    height: 100%;
+    overflow-x: hidden;
+    padding: 60px;
+    height: 250px;
     width: -webkit-fill-available;
     background-color: $border-color;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
 
@@ -114,5 +97,27 @@
   gap: 24px;
   @media only screen and (max-width: $mobile_width) {
     flex-direction: column;
+  }
+}
+
+.cat-paw {
+  position: absolute;
+  right: 22%;
+  bottom: 42%;
+  z-index: -1;
+
+  @media only screen and (max-width: $mobile_width) {
+    right: -10%;
+    bottom: 51%;
+  }
+
+  @media only screen and (max-width: 500px) {
+    right: -45%;
+    bottom: 31%;
+  }
+
+  @media only screen and (min-width: $mobile_width) and (max-width: $tablet_width) {
+    right: -7%;
+    bottom: 47%;
   }
 }

@@ -1,12 +1,12 @@
 @import '../../../app/variables';
 
-.body-modal {
+.body-modal-transaction {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.modal {
+.modal-transaction {
   background-color: $background-color;
   border-radius: 28px;
   padding: 20px;
@@ -17,7 +17,7 @@
 
 }
 
-.button {
+.navigation-button {
   background-color: transparent;
   border: none;
   color: $primary-color;
@@ -28,13 +28,13 @@
 }
 
 h2 {
-  font-weight: 300;
+  font-weight: 300 !important;
 }
 
-.button:hover {
+.navigation-button:hover {
   background-color: $nav-button-hover;
 }
 
-.button:active {
+.navigation-button:active {
   background-color: $nav-button-pressed;
 }

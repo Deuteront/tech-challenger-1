@@ -1,4 +1,4 @@
-import { transaction } from '@/components/body/modal-transaction/modal-transaction.type';
+import { transaction } from '@/components/organisms/modal-transaction/modal-transaction.type';
 import { getFromStorage, saveToStorage } from '@/utils/storage';
 
 export const transactionsName = 'transactions';

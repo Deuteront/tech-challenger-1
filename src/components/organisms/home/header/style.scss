@@ -1,13 +1,14 @@
 @import '../../../../app/variables';
 
 .header {
-  display: flex;
-  height: 58px;
-  gap: 48px;
-  padding: 8px 8%;
-  align-items: center;
   background-color: $secondary-color;
-  justify-content: space-between;
+
+  .container {
+    display: flex;
+    height: 58px;
+    gap: 48px;
+    align-items: center;
+  }
 }
 
 .login {

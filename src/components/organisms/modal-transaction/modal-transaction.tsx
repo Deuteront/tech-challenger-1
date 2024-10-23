@@ -17,9 +17,9 @@ const ModalTransaction: React.FC<ModalContentProps> = ({ closeModal }) => {
   );
 
   return (
-    <div className="modal">
+    <div className="modal-transaction">
       {step === 0 && (
-        <div className="body-modal">
+        <div className="body-modal-transaction">
           <h2>Qual é o valor da transação?</h2>
           <InputCurrency
             value={transactionData.value}
@@ -32,7 +32,7 @@ const ModalTransaction: React.FC<ModalContentProps> = ({ closeModal }) => {
       )}
 
       {step === 1 && (
-        <div className="body-modal">
+        <div className="body-modal-transaction">
           <h2>Como você gostaria de classificar essa transação?</h2>
           <CustomSelect
             value={transactionData.movement}

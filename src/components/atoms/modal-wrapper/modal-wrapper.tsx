@@ -10,8 +10,8 @@ const ModalWrapper: React.FC<ModalWrapperProps> = ({ children, isOpen }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="modal-wrapper">
-      <div className="modal-content">{children}</div>
+    <div className="">
+      <div className="">{children}</div>
     </div>
   );
 };

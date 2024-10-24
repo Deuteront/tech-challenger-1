@@ -1,8 +1,9 @@
 import dayjs, { Dayjs } from 'dayjs';
+import './style.scss';
 import React, { useEffect, useState } from 'react';
 import { CustomSelect } from '@/components/atoms/select/select';
 import { CustomDatePicker } from '@/components/atoms/datepicker/datepicker';
-import NavigationButtons from '@/components/molecules/navigationbuttons/navigationbuttons';
+import NavigationButtons from '@/components/molecules/navigation-buttons/navigation-buttons';
 import { InputCurrency } from '@/components/molecules/input-currency/input-currency';
 import { Transaction } from './edit-transaction.type'; // Importa o tipo
 import {
@@ -42,7 +43,7 @@ const ModalEdit: React.FC<ModalEditProps> = ({ closeModal, transactionId }) => {
   }
 
   return (
-    <div className="modal">
+    <div className="modal-edit-transaction">
       {step === 0 && (
         <div className="body-modal">
           <h2>Editar transação</h2>

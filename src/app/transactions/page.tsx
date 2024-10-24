@@ -3,8 +3,8 @@
 import dayjs, { Dayjs } from 'dayjs';
 import React, { useEffect, useState } from 'react';
 import ModalWrapper from '@/components/atoms/modal-wrapper/modal-wrapper';
-import ModalTransaction from '@/components/body/modal-transaction/modal-transaction';
-import ModalEdit from '@/components/body/edit-transaction/edit-transaction';
+import ModalTransaction from '@/components/organisms/modal-transaction/modal-transaction';
+import ModalEdit from '@/components/organisms/edit-transaction/edit-transaction';
 import { getFromStorage } from '@/utils/storage';
 
 interface Transaction {
@@ -78,8 +78,8 @@ const TransactionPage: React.FC = () => {
         <ModalTransaction closeModal={closeModal} />
       </ModalWrapper>
 
-      {/* Modal para edição de transação */}
-      <ModalWrapper isOpen={isModalOpen && editingTransactionId !== null} title="">
+       {/* Modal para edição de transação */}
+       <ModalWrapper isOpen={isModalOpen && editingTransactionId !== null} title="">
         <ModalEdit closeModal={closeModal} transactionId={editingTransactionId} />
       </ModalWrapper>
     </div>

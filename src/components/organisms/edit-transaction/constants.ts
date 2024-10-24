@@ -1,7 +1,7 @@
 
 import { saveToStorage, getFromStorage } from '@/utils/storage';
 import { Transaction } from './edit-transaction.type'; // Importa o tipo
-import { transactionsName } from '@/components/body/modal-transaction/constants';
+import { transactionsName } from '@/components/organisms/modal-transaction/constants';
 
 // Definições de opções
 export const MOVEMENT_OPTIONS = [

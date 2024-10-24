@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import './style.scss';
 
 interface ModalWrapperProps {
   children: ReactNode;
@@ -10,7 +11,7 @@ const ModalWrapper: React.FC<ModalWrapperProps> = ({ children, isOpen }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="">
+    <div className="modal-wrapper">
       <div className="">{children}</div>
     </div>
   );

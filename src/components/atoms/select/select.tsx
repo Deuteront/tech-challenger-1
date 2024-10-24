@@ -4,9 +4,8 @@ import './style.scss';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
 export function CustomSelect({ value, onChange, options, label }: props) {
-  console.log(label);
   return (
-    <FormControl fullWidth className="custom-form-control">
+    <FormControl fullWidth>
       <InputLabel>{label}</InputLabel>
       <Select
         value={value}

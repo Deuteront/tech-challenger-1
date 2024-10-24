@@ -10,17 +10,23 @@
   line-height: 16px;
   letter-spacing: 0.5px;
   background: #635D6C;
-
+  height: 32px;
+  align-content: center;
 }
 
 .footer {
   display: flex;
   flex-direction: column;
 
+  .footer-background {
+    background: #C2718B;
+  }
+
   .footer-about {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     padding: 32px 16px;
-    justify-content: center;
     gap: 56px;
     align-self: stretch;
     background: #C2718B;

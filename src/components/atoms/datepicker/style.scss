@@ -2,36 +2,10 @@
 
 
 .MuiStack-root {
+  overflow: visible !important;
   padding: 0 !important;
 }
 
-.custom-input {
-  font-family: $custom-font;
-  background-color: $background-color !important;
-
-  .MuiOutlinedInput-root {
-    font-family: $custom-font !important;
-    color: $primary-color;
-
-    & fieldset {
-      border-color: $border-color;
-    }
-
-    &:hover fieldset {
-      border-color: $primary-color;
-    }
-
-    &.Mui-focused fieldset {
-      border-color: $primary-color;
-    }
-  }
-
-  .MuiInputLabel-root {
-    font-family: $custom-font !important;
-    color: $primary-color;
-
-    &.Mui-focused {
-      color: $primary-color;
-    }
-  }
+.MuiSvgIcon-root {
+  color: $primary-color;
 }

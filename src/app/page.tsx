@@ -3,14 +3,14 @@
 import React from 'react';
 
 import './style.scss';
-import { Header } from '@/components/body/home/header/header';
-import { Body } from '@/components/body/home/body/body';
-import { Footer } from '@/components/body/home/footer/footer';
+import { Header } from '@/components/organisms/home/header/header';
+import { Body } from '@/components/organisms/home/body/body';
+import { Footer } from '@/components/organisms/home/footer/footer';
 
 const Home: React.FC = () => {
   return (
     <div className="home">
-      <Header isHome={true} />
+      <Header />
       <Body />
       <Footer />
     </div>

@@ -1,77 +1,7 @@
 @import '../../../app/variables';
 
-.custom-form-control {
-  font-family: $custom-font;
-  background-color: $background-color !important;
 
-  & .MuiOutlinedInput-root {
-    font-family: $custom-font !important;
-    color: $primary-color;
-
-    & fieldset {
-      border-color: $border-color;
-      border-width: 1px;
-    }
-
-    &:hover fieldset {
-      border-color: $primary-color;
-    }
-
-    &.Mui-focused fieldset {
-      border-color: $primary-color;
-      box-shadow: none;
-    }
-  }
-
-  .MuiInputLabel-root {
-    font-family: $custom-font !important;
-    color: $primary-color;
-
-    &.Mui-focused {
-      color: $primary-color;
-    }
-  }
-
-  .MuiSelect-select {
-    font-family: $custom-font !important;
-    color: $primary-color;
-
-    &:focus {
-      background-color: $secondary-color;
-    }
-  }
-}
-
-.custom-select {
-  font-family: $custom-font;
-  background-color: $background-color !important;
-
-  .MuiOutlinedInput-root {
-    font-family: $custom-font !important;
-    color: $primary-color;
-
-    & fieldset {
-      border-color: $border-color;
-    }
-
-    &:hover fieldset {
-      border-color: $primary-color;
-    }
-
-    &.Mui-focused fieldset {
-      border-color: $primary-color;
-    }
-  }
-
-  .MuiInputLabel-root {
-    font-family: $custom-font !important;
-    color: $primary-color;
-
-    &.Mui-focused {
-      color: $primary-color;
-    }
-  }
-
+.MuiFormControl-root {
   .MuiSelect-select {
     font-family: $custom-font !important;
     color: $primary-color;
@@ -90,27 +20,33 @@
     }
   }
 
-  .MuiMenuItem-root {
-    font-family: $custom-font;
-    color: $primary-color;
-    background-color: $secondary-color;
-
-    &:hover {
-      background-color: $primary-color;
-      color: #FFFFFF;
-    }
-
-    &.Mui-selected {
-      background-color: darken($primary-color, 10%);
-      color: #FFFFFF;
-    }
-  }
-
   .MuiSelect-icon {
     color: $primary-color;
   }
 
   .MuiFormControl-root {
     width: 100%;
+  }
+}
+
+
+.MuiPaper-root.MuiMenu-paper {
+  font-family: $custom-font !important;
+  background-color: $background-color !important;
+  color: $primary-color !important;
+
+  .MuiMenuItem-root {
+    font-family: $custom-font !important;
+    color: $primary-color !important;
+
+    &:hover {
+      background-color: lighten($background-color, 10%) !important;
+    }
+
+    &.Mui-selected {
+      background-color: $primary-color !important;
+      color: white !important;
+    }
+
   }
 }

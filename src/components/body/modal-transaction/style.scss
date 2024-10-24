@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  
 }
 
 .modal {
@@ -14,6 +15,12 @@
   max-width: 424px;
   margin: auto; 
   color: #1D1B20;
+
+  position: fixed;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000; 
   
 }
 

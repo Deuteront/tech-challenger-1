@@ -5,7 +5,12 @@ export const saveToStorage = <T>(key: string, data: T): void => {
 export const getFromStorage = <T>(key: string): T | null => {
   const storedData = localStorage.getItem(key);
   if (storedData) {
-    return JSON.parse(storedData);
+    try {
+      return JSON.parse(storedData);
+    } catch (error) {
+      console.error(`Error parsing data for key "${key}":`, error);
+      return null;
+    }
   }
   return null;
 };

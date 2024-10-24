@@ -1,6 +1,6 @@
 import { transaction } from '@/components/body/modal-transaction/modal-transaction.type';
 import { getFromStorage, saveToStorage } from '@/utils/storage';
-
+import dayjs from 'dayjs'; 
 
 export const transactionsName = 'transactions';
 
@@ -24,10 +24,13 @@ export const initialTransactionData: transaction = {
       const transactionKey = transactionsName;
       const storedTransactions =
         (getFromStorage(transactionKey) as transaction[]) || [];
-      
+        const formattedDate = transactionData.transactionDate
+        ? dayjs(transactionData.transactionDate) 
+        : null;
         const newTransaction = {
           ...transactionData,
-          id: generateTransactionId(),
+          transactionDate: formattedDate,
+      id: generateTransactionId(),
         };
 
       storedTransactions.push(newTransaction);

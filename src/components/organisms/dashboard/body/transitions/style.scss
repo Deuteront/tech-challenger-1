@@ -1,5 +1,54 @@
 @import '../../../../../app/variables';
 
+.transactions{
+  .transactions-title{
+    color: #AB5373;
+    font-size: 22px;
+    font-weight: 700;
+  }
+}
+
+.transactions-list{
+  .transactions-list-title{
+    color: #28262B;
+    font-size: 16px;
+  }
+  .transactions-type{
+    font-size: 14px;
+    color: #635D6C;
+  }
+
+  .transaction-details{
+    .transaction-date{
+      color: #635D6C;
+    }
+
+    .transaction-price{
+      font-weight: 700;
+    }
+
+    .outgoing{
+      color: #B3261E;
+    }
+
+    .incoming{
+      color: #3E6642;
+    }
+
+    button{
+      border: none;
+      background: none;
+    }
+  }
+}
+
+.carregar-mais{
+  .link{
+    color: #AB5373;
+    font-size: 14px;
+    text-decoration: none;
+  }
+}
 
 .button.add-button-transitions {
   padding: 8px;

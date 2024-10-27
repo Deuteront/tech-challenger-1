@@ -1,0 +1,26 @@
+@import '../../../app/variables';
+
+.card-balance-actual {
+  display: flex;
+  padding: 15.443px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 11.221px;
+  border-radius: 7.111px;
+  border: 3.555px solid #e4bdc8;
+  flex: 1 1;
+
+  @media only screen and (max-width: $mobile_width) {
+    max-width: unset;
+  }
+
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .icon span {
+    margin-right: 5px;
+  }
+}

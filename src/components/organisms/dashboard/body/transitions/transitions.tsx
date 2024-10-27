@@ -45,7 +45,7 @@ export function Transitions() {
 
   return (
     <>
-      <div className="transactions container">
+      <div className="transactions container pt-3">
         <div className="row mb-3">
           <div className="d-flex flex-row justify-content-between">
             <span className="transactions-title">Transações recentes</span>
@@ -64,8 +64,6 @@ export function Transitions() {
             />
           }
         </div>
-
-        <hr className="hr" />
 
         <div className="carregar-mais d-flex justify-content-center mt-3">
           <a href='' className='link'>Carregar mais</a>

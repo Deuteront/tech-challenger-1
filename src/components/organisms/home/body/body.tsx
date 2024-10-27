@@ -1,65 +1,63 @@
 import React from 'react';
 import './style.scss';
-import { Button } from '@/components/atoms/button/button';
-import Image from 'next/image';
-import { AdvantageList } from '@/components/molecules/advantage/advantage-list';
-import { useRouter } from 'next/navigation';
+import { WelcomeMessage } from '@/components/organisms/home/welcome-message/welcome-message';
+import { FinancialDashboardList } from '@/components/molecules/financial-dashboard/financial-deshboard-list';
+import { CardBalanceActual } from '@/components/molecules/card-balance-actual/card-balance-actual';
 
 export function Body() {
-  const router = useRouter();
-  const handleDashboard = () => router.push('/dashboard');
-  const advantages = [
+  const financialDashboards = [
     {
-      text: 'Relatórios e análises em tempo real',
-      icon: 'graph',
-      image: 'graph2',
+      icon: 'indicador_card_Icon_up',
+      textTitle: 'Entradas',
+      textValue: 'R$ 5.231,99',
+      financialHistory: 'Relação dos últimos 30 dias',
     },
     {
-      text: 'Gerencie suas finanças sem complicações',
-      icon: 'pig',
-      image: 'pig2',
+      icon: 'indicador_card_Icon_low',
+      textTitle: 'Saídas',
+      textValue: 'R$ 2.049,01',
+      financialHistory: 'Relação dos últimos 30 dias',
     },
     {
-      text: 'Notificações para não deixar passar nada',
-      icon: 'ad',
-      image: 'ad2',
+      icon: 'indicador_card_Icon_pig',
+      textTitle: 'Total guardado',
+      textValue: 'R$ 2.049,01',
+      financialHistory: '',
     },
   ];
-
   return (
-    <div className="body">
-      <div className="initial-scream">
-        <div className="container-invite">
-          <div className="container">
-            <div className="row">
-              <div className="col-12">
-                <div className="invite">
-                  <span className="title">
-                    Controle suas finanças na palma da sua pata.
-                  </span>
-                  <Button
-                    onClick={handleDashboard}
-                    className={['button', 'primary-button']}
-                    text="Começar agora"
-                  ></Button>
+    <>
+      <div className="body">
+        <div className="initial-scream">
+          <div className="container-invite">
+            <div className="container">
+              <div className="row">
+                <div className="col-12">
+                  <div className="context-body-home">
+                    <WelcomeMessage />
+                  </div>
+                  <div className="context-body-home">
+                    <CardBalanceActual
+                      icon="visibility"
+                      textValue="R$ 3.182,98"
+                    />
+                  </div>
+                  <div></div>
+                  <div className="context-body-home">
+                    {
+                      <FinancialDashboardList
+                        financialDashboard={financialDashboards}
+                        className="financial-dashboard-list"
+                      />
+                    }
+                  </div>
+                  <div className="divisi"></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="wave">
-          <div className="cat-paw">
-            <Image src="/png/cat.png" alt="cat-paw" width="377" height="482" />
-          </div>
-          <div className="wave-login">
-            <span className="has-login">Vamos Começar?</span>
-            <a href="/dashboard" className="login">
-              Iniciar
-            </a>
-          </div>
-        </div>
       </div>
-      {<AdvantageList advantage={advantages} className="advantage-list" />}
-    </div>
+    </>
   );
 }

@@ -14,10 +14,12 @@ export function FinancialDashboard({
       <div className="icon">
         <Image src={`/svgs/${icon}.svg`} alt={icon} width="62" height="62" />
       </div>
-      <div className='context-card-Dashboard'>
+      <div className="context-card-Dashboard">
         <span className="text-card-Dashboard">{textTitle}</span>
-        <span>{textValue}</span>
-        <span>{financialHistory}</span>
+        <span className="value-card-dashboard">{textValue}</span>
+        {financialHistory && (
+          <span className="desc-card-dashboard">{financialHistory}</span>
+        )}
       </div>
     </div>
   );

@@ -7,11 +7,11 @@ export function CardBalanceActual({ textValue, icon }: props) {
   return (
     <div className="card-balance-actual">
       <div className="icon">
-        <span> Seu saldo atual </span>
+        <span className="text-card-balance-actual">Seu saldo atual</span>
         <Image src={`/svgs/${icon}.svg`} alt={icon} width="18" height="42" />
       </div>
       <div className="context-card-balance-actual">
-        <span>{textValue}</span>
+        <span className="value-card-balance-actual">{textValue}</span>
       </div>
     </div>
   );

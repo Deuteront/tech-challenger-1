@@ -1,13 +1,14 @@
 @import '../../../app/variables';
 
 .financialDashboard {
+  border-radius: 12px;
+  border: 1px solid var(--Schemes-Outline-Variant, #CAC4D0);
+  background: var(--Background-Wrap, #FFF);
   display: flex;
   padding: 28.443px;
   flex-direction: row;
   align-items: center;
-  gap: 11.221px;
-  border-radius: 7.111px;
-  border: 3.555px solid $border-color;
+  gap: 20px;
   max-width: 360px;
   flex: 1;
 
@@ -25,17 +26,38 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #ab5373;
     text-align: center;
-    font-size: 24.887px;
     font-style: normal;
     font-weight: 400;
-    line-height: 120%;
-
+    color: var(--Label-Default, #212533);
+    font-size: 14px;
+    line-height: 150%;
     @media only screen and (max-width: $mobile_width) {
       font-size: 18.887px;
     }
   }
+
+  .value-card-dashboard {
+    color: var(--Label-Default, #212533);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    text-transform: uppercase;
+  }
+
+
+  .desc-card-dashboard {
+    color: var(--Small-Default, #888B99);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    @media only screen and (max-width: $mobile_width) {
+      font-size: 18.887px;
+    }
+  }
+
 
   @media only screen and (max-width: $mobile_width) {
     margin-bottom: 1%;
@@ -45,6 +67,7 @@
 .financial-dashboard-list {
   display: flex;
   justify-content: space-between;
+  gap: 14rem;
 
   @media only screen and (max-width: $mobile_width) {
     display: flex;
@@ -54,7 +77,6 @@
 
   @media only screen and (max-width: 1199px) {
     flex-wrap: wrap;
-    gap: 1rem;
 
     .financialDashboard {
       flex: 1 1 45%;

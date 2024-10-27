@@ -1,10 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Header } from '@/components/organisms/home/header/header';
-import { Body } from '@/components/organisms/dashboard/body/body';
-// import { Body } from '@/components/organisms/home-debora/body/body';
-// import { Header } from '@/components/organisms/home-debora/header-user/header-user';
+import { Header } from '@/components/organisms/landing-page/header/header';
+import { Body } from '@/components/organisms/home/body/body';
 
 const Dashboard: React.FC = () => {
   return (

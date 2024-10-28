@@ -3,6 +3,7 @@ import './style.scss';
 import { WelcomeMessage } from '@/components/organisms/home/welcome-message/welcome-message';
 import { FinancialDashboardList } from '@/components/molecules/financial-dashboard/financial-deshboard-list';
 import { CardBalanceActual } from '@/components/molecules/card-balance-actual/card-balance-actual';
+import { Transitions } from '@/components/organisms/dashboard/body/transitions/transitions';
 
 export function Body() {
   const financialDashboards = [
@@ -51,7 +52,7 @@ export function Body() {
                       />
                     }
                   </div>
-                  <div className="divisi"></div>
+                  <Transitions />
                 </div>
               </div>
             </div>

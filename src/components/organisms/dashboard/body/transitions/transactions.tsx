@@ -2,73 +2,67 @@ import React from 'react';
 import './style.scss';
 import Image from 'next/image';
 import { optionsTransactionsDetails } from './transactions-list.type';
-
+import { Transaction } from '@/components/organisms/edit-transaction/edit-transaction.type';
+import { Button } from '@/components/atoms/button/button';
 
 export function TransactionsDetails({
-    iconTransaction,
-    transactionPlace,
-    paymentMethod,
-    transactionPrice,
-    transactionDate,
-    incomingOrOutgoing,
+  iconTransaction,
+  transactionPlace,
+  paymentMethod,
+  transactionPrice,
+  transactionDate,
+  incomingOrOutgoing,
+  transaction,
 }: optionsTransactionsDetails) {
+  let displayText;
 
-    let displayText;
-
+  const getSinalzinho = (incomingOrOutgoing: string) => {
     if (incomingOrOutgoing === 'outgoing') {
-      displayText = '-';
+      return '-';
     } else {
-      displayText = '+';
+      return '+';
     }
+  };
 
   return (
-    <div className='row'>
-      <div className="transactions-list d-flex flex-row justify-content-between pt-3 pb-3">
-        <div className="col-8">
-          <div className="d-flex flex-row">
-            <div className="transactions-icon me-3">
-              <Image src={`/svgs/${iconTransaction}.svg`} 
-                alt=''
-                width={40}
-                height={40}
-              />
-            </div>
-            <div className="flex-column">
-              <div className="transactions-list-title">
-                {transactionPlace}
-              </div>
-              <div className="transactions-type">
-                {paymentMethod}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="transaction-details d-flex flex-row align-self-stretch">
-          <div className="d-flex flex-column align-items-end mt-2 me-2">
-            <div className="transaction-date mb-2">
-              {transactionDate}
-            </div>
-            <div className="transaction-price">
-              <p className={incomingOrOutgoing}>
-                {displayText}
-                {transactionPrice}
-              </p>
-            </div>
-          </div>
-
-          <div className="d-flex flex-column">
-            <button>
-              <img src="/svgs/grey-edit.svg" className="" />
-            </button>
-            <button>
-              <img src="/svgs/grey-delete.svg" />
-            </button>
-          </div>
+    <div className="transaction">
+      <div className="transaction-title">
+        <Image
+          src={`/svgs/${iconTransaction}.svg`}
+          alt={iconTransaction}
+          width={40}
+          height={40}
+        />
+        <div className="flex-column">
+          <div className="transactions-list-title">{transactionPlace}</div>
+          <div className="transactions-type">{paymentMethod}</div>
         </div>
       </div>
 
-      <hr className="hr" />
+      <div className="transaction-desc">
+        <div className="transaction-info">
+          <div className="transaction-date">{transactionDate}</div>
+          <div className={'transaction-price ' + incomingOrOutgoing}>
+            {getSinalzinho(incomingOrOutgoing) + 'R$: ' + transactionPrice}
+          </div>
+        </div>
+        <div className="transaction-edit">
+          <Button
+            onClick={() => {
+              return;
+            }}
+            icon={'grey-edit.svg'}
+            className={['transaction-button']}
+          ></Button>
+          <Button
+            className={['transaction-button']}
+            onClick={() => {
+              return;
+            }}
+            icon={'grey-delete.svg'}
+          ></Button>
+        </div>
+      </div>
     </div>
   );
 }

@@ -45,7 +45,7 @@ export function Transitions() {
 
   return (
     <>
-      <div className="transactions container">
+      <div className="transactions">
         <div className="row">
           <div className="d-flex flex-row justify-content-between">
             <span className="transactions-title">Transações recentes</span>

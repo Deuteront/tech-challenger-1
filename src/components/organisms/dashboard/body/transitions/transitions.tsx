@@ -45,8 +45,8 @@ export function Transitions() {
 
   return (
     <>
-      <div className="transactions container pt-3">
-        <div className="row mb-3">
+      <div className="transactions container">
+        <div className="row">
           <div className="d-flex flex-row justify-content-between">
             <span className="transactions-title">Transações recentes</span>
             <Button
@@ -58,11 +58,9 @@ export function Transitions() {
         </div>
         <TransactionsDetailsList transactionsList={transactionsList} />
       </div>
-      <div style={{ height: '100%' }}>
-        <ModalWrapper isOpen={isModalOpen} title="">
-          <ModalTransaction closeModal={closeModal} />
-        </ModalWrapper>
-      </div>
+      <ModalWrapper isOpen={isModalOpen} title="">
+        <ModalTransaction closeModal={closeModal} />
+      </ModalWrapper>
     </>
   );
 }

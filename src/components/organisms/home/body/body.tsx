@@ -29,32 +29,21 @@ export function Body() {
   return (
     <>
       <div className="body">
-        <div className="initial-scream">
-          <div className="container-invite">
-            <div className="container">
-              <div className="row">
-                <div className="col-12">
-                  <div className="context-body-home">
-                    <WelcomeMessage />
-                  </div>
-                  <div className="context-body-home">
-                    <CardBalanceActual
-                      icon="visibility"
-                      textValue="R$ 3.182,98"
-                    />
-                  </div>
-                  <div></div>
-                  <div className="context-body-home">
-                    {
-                      <FinancialDashboardList
-                        financialDashboard={financialDashboards}
-                        className="financial-dashboard-list"
-                      />
-                    }
-                  </div>
-                  <Transitions />
-                </div>
+        <div className="container">
+          <div className="row">
+            <div className="col-12 context-body-home">
+              <div className="welcome-container">
+                <WelcomeMessage />
+                <CardBalanceActual icon="visibility" textValue="R$ 3.182,98" />
+                {
+                  <FinancialDashboardList
+                    financialDashboard={financialDashboards}
+                    className="financial-dashboard-list"
+                  />
+                }
               </div>
+              <div className="separation"></div>
+              <Transitions />
             </div>
           </div>
         </div>

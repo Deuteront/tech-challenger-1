@@ -9,7 +9,6 @@
   flex-direction: row;
   align-items: center;
   gap: 20px;
-  max-width: 360px;
   flex: 1;
 
   @media only screen and (max-width: $mobile_width) {
@@ -57,30 +56,22 @@
       font-size: 18.887px;
     }
   }
-
-
-  @media only screen and (max-width: $mobile_width) {
-    margin-bottom: 1%;
-  }
 }
 
 .financial-dashboard-list {
   display: flex;
   justify-content: space-between;
-  gap: 14rem;
+  gap: 14px;
+  flex-wrap: wrap;
 
   @media only screen and (max-width: $mobile_width) {
-    display: flex;
     justify-content: space-between;
     flex-direction: column;
   }
 
-  @media only screen and (max-width: 1199px) {
-    flex-wrap: wrap;
-
-    .financialDashboard {
-      flex: 1 1 45%;
-      max-width: 100%;
+  @media only screen and (min-width: $mobile_width) and (max-width: $tablet_width) {
+    .financialDashboard:last-child {
+      flex-basis: 100%;
     }
   }
 }

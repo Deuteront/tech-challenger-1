@@ -43,7 +43,7 @@ export function TransactionsDetails({
         <div className="transaction-info">
           <div className="transaction-date">{transactionDate}</div>
           <div className={'transaction-price ' + incomingOrOutgoing}>
-            {getSinalzinho(incomingOrOutgoing) + 'R$: ' + transactionPrice}
+            {getSinalzinho(incomingOrOutgoing) + 'R$ ' + transactionPrice}
           </div>
         </div>
         <div className="transaction-edit">

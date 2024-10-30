@@ -1,6 +1,10 @@
 @import '../../../../../app/variables';
 
 .transactions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
   .transactions-title {
     color: #AB5373;
     font-size: 22px;
@@ -48,6 +52,10 @@
   align-items: center;
   align-self: stretch;
   border-top: 1px solid var(--Schemes-Outline-Variant, #CAC4D0);
+
+  &:first-child {
+    border-top: none;
+  }
 }
 
 .transaction-title {

@@ -28,5 +28,18 @@
 }
 
 .context-body-home {
-  padding: 1%;
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.separation {
+  border-bottom: solid 1px var(--Schemes-Outline-Variant, #CAC4D0);
 }

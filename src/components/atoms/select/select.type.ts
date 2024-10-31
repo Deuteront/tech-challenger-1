@@ -11,4 +11,6 @@ export type props = {
   onChange: (event: SelectChangeEvent, child: ReactNode) => void;
   options: Option[];
   label: string;
+  error?: boolean;
+  helperText?: string;
 };

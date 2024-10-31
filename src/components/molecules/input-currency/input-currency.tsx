@@ -1,15 +1,21 @@
-'use client';
-
 import React, { useEffect, useState } from 'react';
 import { Input } from '@/components/atoms/input/input';
 
 interface InputCurrencyProps {
   label: string;
   value: number;
+  error?: boolean;
+  helperText?: string;
   onChange: (value: number) => void;
 }
 
-export function InputCurrency({ label, value, onChange }: InputCurrencyProps) {
+export function InputCurrency({
+  label,
+  value,
+  onChange,
+  error,
+  helperText,
+}: InputCurrencyProps) {
   const [displayValue, setDisplayValue] = useState('');
 
   useEffect(() => {
@@ -41,8 +47,9 @@ export function InputCurrency({ label, value, onChange }: InputCurrencyProps) {
       label={label}
       value={displayValue}
       onChange={handleChange}
+      error={error}
       type="text"
-      helperText={displayValue === 'R$ 0,00' ? 'Valor mínimo é R$ 0,01' : ''}
+      helperText={helperText}
     />
   );
 }

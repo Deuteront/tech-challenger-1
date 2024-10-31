@@ -19,6 +19,20 @@ html, body {
   line-height: normal;
 }
 
+.MuiFormHelperText-root.Mui-error {
+  font-family: $custom-font !important;
+  color: $error-color !important;
+}
+
+.MuiSelect-root.Mui-error {
+}
+
+.Mui-error {
+  color: $error-color !important;
+  fieldset {
+    border-color: $error-color !important;
+  }
+}
 
 .MuiFormControl-root {
   font-family: $custom-font;

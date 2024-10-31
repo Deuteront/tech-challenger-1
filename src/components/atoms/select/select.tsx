@@ -1,11 +1,24 @@
 import React from 'react';
 import { props } from '@/components/atoms/select/select.type';
 import './style.scss';
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import {
+  FormControl,
+  FormHelperText,
+  InputLabel,
+  MenuItem,
+  Select,
+} from '@mui/material';
 
-export function CustomSelect({ value, onChange, options, label }: props) {
+export function CustomSelect({
+  value,
+  onChange,
+  options,
+  label,
+  helperText,
+  error,
+}: props) {
   return (
-    <FormControl fullWidth>
+    <FormControl fullWidth error={error}>
       <InputLabel>{label}</InputLabel>
       <Select
         value={value}
@@ -19,6 +32,7 @@ export function CustomSelect({ value, onChange, options, label }: props) {
           </MenuItem>
         ))}
       </Select>
+      {helperText && <FormHelperText>{helperText}</FormHelperText>}
     </FormControl>
   );
 }

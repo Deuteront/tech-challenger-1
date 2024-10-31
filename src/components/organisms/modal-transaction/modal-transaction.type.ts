@@ -14,3 +14,12 @@ export type transaction = {
 export type transactionModal = {
   transaction: transaction;
 } & Omit<transactionsDetails, 'transactionsList'>;
+
+export type errors = {
+  value?: string;
+  movement?: string;
+  paymentMethod?: string;
+  establishmentType?: string;
+  desc?: string;
+  transactionDate?: string;
+};

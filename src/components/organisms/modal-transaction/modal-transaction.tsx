@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useEffect, useState } from 'react';
 import { CustomSelect } from '@/components/atoms/select/select';
 import { CustomDatePicker } from '@/components/atoms/datepicker/datepicker';
@@ -15,7 +13,10 @@ import {
   PAYMENT_METHOD_OPTIONS,
   ESTABLISHMENT_TYPE_OPTIONS,
 } from './constants';
-import { transaction } from '@/components/organisms/modal-transaction/modal-transaction.type';
+import {
+  errors,
+  transaction,
+} from '@/components/organisms/modal-transaction/modal-transaction.type';
 import dayjs from 'dayjs';
 import { Input } from '@/components/atoms/input/input';
 
@@ -29,10 +30,11 @@ const ModalTransaction: React.FC<ModalContentProps> = ({
   transactionId,
 }) => {
   const [step, setStep] = useState(0);
-
+  const [errors, setErrors] = useState<errors>({});
   const [transactionData, setTransactionData] = useState<transaction>(
     initialTransactionData
   );
+
   useEffect(() => {
     const selectedTransaction = getTransactionById(transactionId);
     if (selectedTransaction) {
@@ -46,13 +48,42 @@ const ModalTransaction: React.FC<ModalContentProps> = ({
     }
   }, [transactionId]);
 
-  if (!transactionData && transactionId) {
-    return (
-      <div className="modal-transaction">
-        <h2>Editar transação</h2>
-      </div>
-    );
-  }
+  const validateStep = () => {
+    const newErrors: errors = {};
+
+    if (step === 0) {
+      if (!transactionData.value || transactionData.value === 0) {
+        newErrors.value = 'Valor é obrigatório.';
+      }
+    }
+
+    if (step === 1) {
+      if (!transactionData.movement) {
+        newErrors.movement = 'Movimentação é obrigatória.';
+      }
+      if (!transactionData.paymentMethod) {
+        newErrors.paymentMethod = 'Método de pagamento é obrigatório.';
+      }
+      if (!transactionData.desc) {
+        newErrors.desc = 'Descrição é obrigatória.';
+      }
+      if (!transactionData.establishmentType) {
+        newErrors.establishmentType = 'Tipo de estabelecimento é obrigatório.';
+      }
+      if (!transactionData.transactionDate) {
+        newErrors.transactionDate = 'Data da transação é obrigatória.';
+      }
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleNextStep = () => {
+    if (validateStep()) {
+      handleNext(step, setStep, transactionData, closeModal);
+    }
+  };
 
   return (
     <div className="modal-transaction">
@@ -66,6 +97,8 @@ const ModalTransaction: React.FC<ModalContentProps> = ({
           <InputCurrency
             value={transactionData.value}
             label="Valor"
+            error={!!errors.value}
+            helperText={errors.value}
             onChange={(value) =>
               setTransactionData({
                 ...transactionData,
@@ -89,7 +122,10 @@ const ModalTransaction: React.FC<ModalContentProps> = ({
               })
             }
             options={MOVEMENT_OPTIONS}
+            error={!!errors.movement}
+            helperText={errors.movement}
           />
+
           <CustomSelect
             label="Método de pagamento"
             value={transactionData.paymentMethod.toString()}
@@ -100,10 +136,15 @@ const ModalTransaction: React.FC<ModalContentProps> = ({
               })
             }
             options={PAYMENT_METHOD_OPTIONS}
+            error={!!errors.paymentMethod}
+            helperText={errors.paymentMethod}
           />
+
           <Input
             label="Descrição"
             value={transactionData.desc.toString()}
+            error={!!errors.desc}
+            helperText={errors.desc}
             onChange={(e) =>
               setTransactionData({
                 ...transactionData,
@@ -111,6 +152,7 @@ const ModalTransaction: React.FC<ModalContentProps> = ({
               })
             }
           />
+
           <CustomSelect
             value={transactionData.establishmentType.toString()}
             label="Tipo de estabelecimento"
@@ -121,10 +163,15 @@ const ModalTransaction: React.FC<ModalContentProps> = ({
               })
             }
             options={ESTABLISHMENT_TYPE_OPTIONS}
+            error={!!errors.establishmentType}
+            helperText={errors.establishmentType}
           />
+
           <CustomDatePicker
             label="Data da transação"
-            value={transactionData.transactionDate}
+            value={transactionData.transactionDate || dayjs()}
+            error={!!errors.transactionDate}
+            helperText={errors.transactionDate}
             onChange={(e) =>
               setTransactionData({
                 ...transactionData,
@@ -140,12 +187,9 @@ const ModalTransaction: React.FC<ModalContentProps> = ({
           <h2>Transação adicionada com sucesso!</h2>
         </div>
       )}
-
       <NavigationButtons
         closeModal={closeModal}
-        handleNext={() =>
-          handleNext(step, setStep, transactionData, closeModal)
-        }
+        handleNext={handleNextStep}
         handlePrev={() => handlePrev(step, setStep)}
         isLastStep={step === 2}
         isFirstStep={step === 0}

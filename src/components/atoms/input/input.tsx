@@ -10,6 +10,7 @@ export function Input({
   error,
   helperText,
   className,
+  type,
 }: props) {
   return (
     <TextField
@@ -20,6 +21,7 @@ export function Input({
       onChange={onChange}
       fullWidth
       error={error}
+      type={type}
       helperText={helperText}
     />
   );

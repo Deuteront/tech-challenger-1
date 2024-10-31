@@ -1,12 +1,25 @@
 export const saveToStorage = <T>(key: string, data: T): void => {
-  localStorage.setItem(key, JSON.stringify(data));
+  if (typeof window !== 'undefined') {
+    localStorage.setItem(key, JSON.stringify(data));
+  } else {
+    console.warn(
+      `Attempted to save to localStorage outside of browser for key "${key}".`
+    );
+  }
 };
 
 export const getFromStorage = <T>(key: string): T | null => {
+  if (typeof window === 'undefined') {
+    console.warn(
+      `Attempted to get from localStorage outside of browser for key "${key}".`
+    );
+    return null;
+  }
+
   const storedData = localStorage.getItem(key);
   if (storedData) {
     try {
-      return JSON.parse(storedData);
+      return JSON.parse(storedData) as T;
     } catch (error) {
       console.error(`Error parsing data for key "${key}":`, error);
       return null;
@@ -16,5 +29,11 @@ export const getFromStorage = <T>(key: string): T | null => {
 };
 
 export const removeFromStorage = (key: string): void => {
-  localStorage.removeItem(key);
+  if (typeof window !== 'undefined') {
+    localStorage.removeItem(key);
+  } else {
+    console.warn(
+      `Attempted to remove from localStorage outside of browser for key "${key}".`
+    );
+  }
 };

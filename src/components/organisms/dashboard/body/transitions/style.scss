@@ -12,7 +12,24 @@
   }
 }
 
+.transactions-none {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  color: #28262B;
+  font-size: 16px;
+  font-weight: 400;
+  flex-direction: column;
+}
+
 .transactions-list {
+  height: 240px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
   .transactions-list-title {
     color: #28262B;
     font-size: 16px;
@@ -34,6 +51,7 @@
   font-weight: 600;
   line-height: var(--Title-Medium-Line-Height, 24px);
   letter-spacing: var(--Title-Medium-Tracking, 0.15px);
+  text-align: end;
 
   &.outgoing {
     color: #B3261E;

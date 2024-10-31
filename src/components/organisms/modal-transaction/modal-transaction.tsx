@@ -1,31 +1,76 @@
-import React, { useState } from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import { CustomSelect } from '@/components/atoms/select/select';
 import { CustomDatePicker } from '@/components/atoms/datepicker/datepicker';
 import NavigationButtons from '@/components/molecules/navigation-buttons/navigation-buttons';
 import './style.scss';
 import { InputCurrency } from '@/components/molecules/input-currency/input-currency';
-import { initialTransactionData, handleNext, handlePrev } from './constants';
+import {
+  initialTransactionData,
+  handleNext,
+  handlePrev,
+  getTransactionById,
+  MOVEMENT_OPTIONS,
+  PAYMENT_METHOD_OPTIONS,
+  ESTABLISHMENT_TYPE_OPTIONS,
+} from './constants';
+import { transaction } from '@/components/organisms/modal-transaction/modal-transaction.type';
+import dayjs from 'dayjs';
+import { Input } from '@/components/atoms/input/input';
 
 interface ModalContentProps {
   closeModal: () => void;
+  transactionId?: transaction['id'];
 }
 
-const ModalTransaction: React.FC<ModalContentProps> = ({ closeModal }) => {
+const ModalTransaction: React.FC<ModalContentProps> = ({
+  closeModal,
+  transactionId,
+}) => {
   const [step, setStep] = useState(0);
-  const [transactionData, setTransactionData] = useState(
+
+  const [transactionData, setTransactionData] = useState<transaction>(
     initialTransactionData
   );
+  useEffect(() => {
+    const selectedTransaction = getTransactionById(transactionId);
+    if (selectedTransaction) {
+      const transactionWithValidDate = {
+        ...selectedTransaction,
+        transactionDate: selectedTransaction.transactionDate
+          ? dayjs(selectedTransaction.transactionDate)
+          : null,
+      };
+      setTransactionData(transactionWithValidDate);
+    }
+  }, [transactionId]);
+
+  if (!transactionData && transactionId) {
+    return (
+      <div className="modal-transaction">
+        <h2>Editar transação</h2>
+      </div>
+    );
+  }
 
   return (
     <div className="modal-transaction">
       {step === 0 && (
         <div className="body-modal-transaction">
-          <h2>Qual é o valor da transação?</h2>
+          {transactionId ? (
+            <h2>Editar transação</h2>
+          ) : (
+            <h2>Qual é o valor da transação?</h2>
+          )}
           <InputCurrency
             value={transactionData.value}
             label="Valor"
-            onChange={(e) =>
-              setTransactionData({ ...transactionData, value: e.target.value })
+            onChange={(value) =>
+              setTransactionData({
+                ...transactionData,
+                value,
+              })
             }
           />
         </div>
@@ -35,7 +80,7 @@ const ModalTransaction: React.FC<ModalContentProps> = ({ closeModal }) => {
         <div className="body-modal-transaction">
           <h2>Como você gostaria de classificar essa transação?</h2>
           <CustomSelect
-            value={transactionData.movement}
+            value={transactionData.movement.toString()}
             label="Movimentação"
             onChange={(e) =>
               setTransactionData({
@@ -43,28 +88,31 @@ const ModalTransaction: React.FC<ModalContentProps> = ({ closeModal }) => {
                 movement: e.target.value,
               })
             }
-            options={[
-              { value: 'entrada', text: 'Entrada' },
-              { value: 'saída', text: 'Saída' },
-            ]}
+            options={MOVEMENT_OPTIONS}
           />
           <CustomSelect
             label="Método de pagamento"
-            value={transactionData.paymentMethod}
+            value={transactionData.paymentMethod.toString()}
             onChange={(e) =>
               setTransactionData({
                 ...transactionData,
                 paymentMethod: e.target.value,
               })
             }
-            options={[
-              { value: 'dinheiro', text: 'Dinheiro' },
-              { value: 'cartão', text: 'Cartão' },
-              { value: 'pix', text: 'Pix' },
-            ]}
+            options={PAYMENT_METHOD_OPTIONS}
+          />
+          <Input
+            label="Descrição"
+            value={transactionData.desc.toString()}
+            onChange={(e) =>
+              setTransactionData({
+                ...transactionData,
+                desc: e.target.value,
+              })
+            }
           />
           <CustomSelect
-            value={transactionData.establishmentType}
+            value={transactionData.establishmentType.toString()}
             label="Tipo de estabelecimento"
             onChange={(e) =>
               setTransactionData({
@@ -72,10 +120,7 @@ const ModalTransaction: React.FC<ModalContentProps> = ({ closeModal }) => {
                 establishmentType: e.target.value,
               })
             }
-            options={[
-              { value: 'alimentação', text: 'Alimentação' },
-              { value: 'conta', text: 'Conta' },
-            ]}
+            options={ESTABLISHMENT_TYPE_OPTIONS}
           />
           <CustomDatePicker
             label="Data da transação"

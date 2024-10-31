@@ -4,11 +4,18 @@ import { TransactionsDetails } from './transactions';
 
 export function TransactionsDetailsList({
   transactionsList,
+  edit,
+  exclude,
 }: transactionsDetails) {
   return (
     <div className="transactions-list">
       {transactionsList.map((item, index) => (
-        <TransactionsDetails key={index} {...item} />
+        <TransactionsDetails
+          key={index}
+          transaction={item}
+          exclude={exclude}
+          edit={edit}
+        />
       ))}
     </div>
   );

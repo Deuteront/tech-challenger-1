@@ -4,7 +4,7 @@ export type props = {
   textValue: string;
   financialHistory: string;
 };
-export type propsfinancialDashboardList = {
+export type propsFinancialDashboardList = {
   financialDashboard: props[];
   className?: string;
 };

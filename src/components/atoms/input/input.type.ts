@@ -7,4 +7,5 @@ export type props = {
   error?: boolean;
   helperText?: string;
   className?: string;
+  type?: string;
 };

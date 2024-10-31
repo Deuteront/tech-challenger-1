@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import './style.scss';
 import { WelcomeMessage } from '@/components/organisms/home/welcome-message/welcome-message';

@@ -29,6 +29,7 @@ html, body {
 
 .Mui-error {
   color: $error-color !important;
+
   fieldset {
     border-color: $error-color !important;
   }
@@ -64,3 +65,10 @@ html, body {
     }
   }
 }
+
+.invisible-values {
+  .value-card-balance-actual, .value-card-dashboard, .transaction-price {
+    filter: blur(6px);
+  }
+}
+

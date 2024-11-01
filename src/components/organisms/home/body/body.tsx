@@ -41,7 +41,8 @@ export function Body() {
       financialHistory: '',
     },
   ]);
-  const [totalValue, setTotalValue] = useState<String>('----');
+  const [visibleValues, setVisibleValues] = useState<boolean>(true);
+  const [totalValue, setTotalValue] = useState<string>('----');
   useEffect(() => {
     const totalIncoming = transactions?.reduce((acc, transaction) => {
       return transaction.movement === 'incoming' &&
@@ -86,17 +87,21 @@ export function Body() {
       'R$ ' + ((totalIncoming || 0) - (totalOutgoing || 0)).toFixed(2)
     );
   }, [transactions]);
+  const addClassInvisible = () => {
+    setVisibleValues(!visibleValues);
+  };
   return (
     <>
-      <div className="body">
+      <div className={'body ' + (visibleValues ? '' : 'invisible-values')}>
         <div className="container">
           <div className="row">
             <div className="col-12 context-body-home">
               <div className="welcome-container">
                 <WelcomeMessage />
                 <CardBalanceActual
-                  icon="visibility"
+                  icon={visibleValues ? 'visibility' : 'invisibility'}
                   textValue={totalValue?.toString()}
+                  onClick={addClassInvisible}
                 />
                 <FinancialDashboardList
                   financialDashboard={financialDashboards}

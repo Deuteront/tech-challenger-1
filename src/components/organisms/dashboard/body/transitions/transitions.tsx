@@ -7,20 +7,13 @@ import ModalWrapper from '@/components/atoms/modal-wrapper/modal-wrapper';
 import ModalTransaction from '@/components/organisms/modal-transaction/modal-transaction';
 import { TransactionsDetailsList } from './transactions-list';
 import { transaction } from '@/components/organisms/modal-transaction/modal-transaction.type';
-import { getFromStorage } from '@/utils/storage';
-import { transactionsName } from '@/components/organisms/modal-transaction/constants';
+import { useTransactionContext } from '@/components/organisms/providers/transaction-context';
 
 export function Transitions() {
+  const { transactions, removeTransaction } = useTransactionContext();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [transactionsList, setTransactionsList] = useState<
-    transaction[] | null
-  >(null);
   const [transactionId, setTransactionId] =
     useState<transaction['id']>(undefined);
-  useEffect(() => {
-    const storedTransactions = getFromStorage<transaction[]>(transactionsName);
-    setTransactionsList(storedTransactions || []);
-  }, []);
 
   const openModal = (id?: transaction['id']) => {
     setTransactionId(id);
@@ -32,7 +25,7 @@ export function Transitions() {
   };
 
   const exclude = (id: transaction['id']) => {
-    console.log();
+    removeTransaction(id);
   };
 
   return (
@@ -48,19 +41,17 @@ export function Transitions() {
             ></Button>
           </div>
         </div>
-        {transactionsList && transactionsList.length > 0 ? (
+        {transactions && transactions.length > 0 ? (
           <TransactionsDetailsList
-            transactionsList={transactionsList}
+            transactionsList={transactions}
             edit={openModal}
             exclude={exclude}
           />
         ) : (
-          <>
-            <div className="transactions-none">
-              <span>Já realizou alguma transação?</span>
-              <span>Nenhuma transação encontrada.</span>
-            </div>
-          </>
+          <div className="transactions-none">
+            <span>Já realizou alguma transação?</span>
+            <span>Nenhuma transação encontrada.</span>
+          </div>
         )}
       </div>
       <ModalWrapper isOpen={isModalOpen} title="">

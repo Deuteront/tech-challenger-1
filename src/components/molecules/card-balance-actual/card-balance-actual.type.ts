@@ -1,4 +1,4 @@
 export type props = {
-    icon: string;
-    textValue: string;
-  };
+  icon: string;
+  textValue?: string;
+};

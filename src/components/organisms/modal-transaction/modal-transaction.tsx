@@ -8,7 +8,6 @@ import {
   initialTransactionData,
   handleNext,
   handlePrev,
-  getTransactionById,
   MOVEMENT_OPTIONS,
   PAYMENT_METHOD_OPTIONS,
   ESTABLISHMENT_TYPE_OPTIONS,
@@ -19,6 +18,7 @@ import {
 } from '@/components/organisms/modal-transaction/modal-transaction.type';
 import dayjs from 'dayjs';
 import { Input } from '@/components/atoms/input/input';
+import { useTransactionContext } from '@/components/organisms/providers/transaction-context';
 
 interface ModalContentProps {
   closeModal: () => void;
@@ -34,19 +34,15 @@ const ModalTransaction: React.FC<ModalContentProps> = ({
   const [transactionData, setTransactionData] = useState<transaction>(
     initialTransactionData
   );
+  const { transactions, editTransaction, addTransaction } =
+    useTransactionContext();
 
   useEffect(() => {
-    const selectedTransaction = getTransactionById(transactionId);
-    if (selectedTransaction) {
-      const transactionWithValidDate = {
-        ...selectedTransaction,
-        transactionDate: selectedTransaction.transactionDate
-          ? dayjs(selectedTransaction.transactionDate)
-          : null,
-      };
-      setTransactionData(transactionWithValidDate);
+    const transactionToEdit = transactions.find((t) => t.id === transactionId);
+    if (transactionToEdit) {
+      setTransactionData(transactionToEdit);
     }
-  }, [transactionId]);
+  }, [transactionId, transactions]);
 
   const validateStep = () => {
     const newErrors: errors = {};
@@ -81,7 +77,15 @@ const ModalTransaction: React.FC<ModalContentProps> = ({
 
   const handleNextStep = () => {
     if (validateStep()) {
-      handleNext(step, setStep, transactionData, closeModal);
+      if (step === 1 && transactionId) {
+        editTransaction(transactionData);
+      }
+      handleNext(
+        step,
+        setStep,
+        transactionData,
+        (transaction) => addTransaction(transaction) && closeModal()
+      );
     }
   };
 
@@ -166,18 +170,21 @@ const ModalTransaction: React.FC<ModalContentProps> = ({
             error={!!errors.establishmentType}
             helperText={errors.establishmentType}
           />
-
           <CustomDatePicker
             label="Data da transação"
-            value={transactionData.transactionDate || dayjs()}
+            value={
+              transactionData.transactionDate
+                ? dayjs(transactionData.transactionDate)
+                : dayjs()
+            }
             error={!!errors.transactionDate}
             helperText={errors.transactionDate}
-            onChange={(e) =>
+            onChange={(e) => {
               setTransactionData({
                 ...transactionData,
                 transactionDate: e,
-              })
-            }
+              });
+            }}
           />
         </div>
       )}

@@ -3,14 +3,17 @@ import './style.scss';
 import dayjs from 'dayjs';
 import 'dayjs/locale/pt-br';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
+import { getFromStorage, saveToStorage } from '@/utils/storage';
 
 dayjs.extend(localizedFormat);
 dayjs.locale('pt-br');
 
+const NAME_KEY = 'name';
+
 export function WelcomeMessage() {
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState(
-    'Click e digite seu nome e precione enter'
+    getFromStorage(NAME_KEY) || 'Click e digite seu nome e precione enter'
   );
   const hello = 'Olá, ';
 
@@ -19,6 +22,7 @@ export function WelcomeMessage() {
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    saveToStorage(NAME_KEY, event.target.value);
     setTitle(event.target.value);
   };
 

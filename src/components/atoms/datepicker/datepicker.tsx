@@ -23,7 +23,9 @@ export const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
 }) => {
   const handleDateChange = (newValue: Dayjs | null) => {
     if (newValue && newValue.isAfter(dayjs())) {
-      onChange(dayjs());
+      onChange(newValue);
+    } else {
+      onChange(null);
     }
   };
 

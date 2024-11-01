@@ -16,7 +16,7 @@ export function FinancialDashboard({
       </div>
       <div className="context-card-Dashboard">
         <span className="text-card-Dashboard">{textTitle}</span>
-        <span className="value-card-dashboard">{textValue}</span>
+        <span className="value-card-dashboard">{'R$ ' + textValue}</span>
         {financialHistory && (
           <span className="desc-card-dashboard">{financialHistory}</span>
         )}

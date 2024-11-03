@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { transaction } from '@/components/organisms/modal-transaction/modal-transaction.type';
 import {
   generateTransactionId,
@@ -9,7 +9,7 @@ interface TransactionContextType {
   transactions: transaction[];
   addTransaction: (newTransaction: transaction) => boolean;
   removeTransaction: (id: transaction['id']) => void;
-  editTransaction: (updatedTransaction: transaction) => void;
+  editTransaction: (updatedTransaction: transaction) => boolean;
 }
 
 const TransactionContext = createContext<TransactionContextType | undefined>(
@@ -25,7 +25,6 @@ export const TransactionProvider: React.FC<{ children: React.ReactNode }> = ({
   });
 
   const addTransaction = (newTransaction: transaction) => {
-    console.log('essa merda chega aqui');
     setTransactions((prev) => {
       const updatedTransactions = [
         ...prev,
@@ -69,6 +68,7 @@ export const TransactionProvider: React.FC<{ children: React.ReactNode }> = ({
       );
       return updatedTransactions;
     });
+    return true;
   };
 
   return (

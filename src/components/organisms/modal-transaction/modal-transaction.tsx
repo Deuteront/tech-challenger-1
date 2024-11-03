@@ -80,12 +80,13 @@ const ModalTransaction: React.FC<ModalContentProps> = ({
       if (step === 1 && transactionId) {
         editTransaction(transactionData);
       }
-      handleNext(
-        step,
-        setStep,
-        transactionData,
-        (transaction) => addTransaction(transaction) && closeModal()
-      );
+      handleNext(step, setStep, transactionData, (transaction) => {
+        const funcTransaction = transactionId
+          ? editTransaction
+          : addTransaction;
+
+        return funcTransaction(transaction) && closeModal();
+      });
     }
   };
 

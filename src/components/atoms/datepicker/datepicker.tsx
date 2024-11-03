@@ -1,10 +1,13 @@
 import React from 'react';
 import './style.scss';
 import dayjs, { Dayjs } from 'dayjs';
+import 'dayjs/locale/pt-br';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { FormControl, FormHelperText } from '@mui/material';
+import { DatePicker } from '@mui/x-date-pickers';
+
+dayjs.locale('pt-br');
 
 type CustomDatePickerProps = {
   label: string;
@@ -22,31 +25,21 @@ export const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
   helperText,
 }) => {
   const handleDateChange = (newValue: Dayjs | null) => {
-    if (newValue && newValue.isAfter(dayjs())) {
+    if (newValue && newValue.isBefore(dayjs())) {
       onChange(newValue);
     } else {
-      onChange(null);
+      onChange(dayjs());
     }
   };
 
   return (
     <FormControl fullWidth error={error}>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DateTimePicker
+      <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt-br">
+        <DatePicker
           label={label}
           onChange={handleDateChange}
           value={value}
           className="custom-input"
-          slotProps={{
-            textField: {
-              error: error,
-            },
-          }}
-          viewRenderers={{
-            hours: null,
-            minutes: null,
-            seconds: null,
-          }}
         />
       </LocalizationProvider>
       {helperText && <FormHelperText>{helperText}</FormHelperText>}

@@ -35,6 +35,24 @@ html, body {
   }
 }
 
+.MuiDateCalendar-root, .MuiPickersPopper-paper {
+  background-color: $background-color !important;
+
+  .MuiTypography-root, .MuiPickersDay-root, .MuiPickersCalendarHeader-label, .MuiPickersYear-yearButton {
+    font-family: $custom-font;
+
+    &.Mui-selected {
+      background-color: $primary-color !important;
+      color: $background-color !important;
+    }
+
+  }
+}
+
+.MuiPickersCalendarHeader-label {
+  color: $primary-color !important;
+}
+
 .MuiFormControl-root {
   font-family: $custom-font;
   background-color: $background-color !important;
@@ -71,6 +89,7 @@ html, body {
     filter: blur(6px);
     position: relative;
     color: transparent !important;
+
     &::after {
       content: '-----';
       position: absolute;

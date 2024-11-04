@@ -2,6 +2,7 @@ import React from 'react';
 import './style.scss';
 import Image from 'next/image';
 import { Button } from '@/components/atoms/button/button';
+import Tooltip from '@mui/material/Tooltip';
 import dayjs from 'dayjs';
 import { transactionModal } from '@/components/organisms/modal-transaction/modal-transaction.type';
 import {
@@ -24,6 +25,7 @@ export function TransactionsDetails({
     movement,
     desc,
   } = transaction;
+
   return (
     <div className="transaction">
       <div className="transaction-title">
@@ -34,7 +36,9 @@ export function TransactionsDetails({
           height={40}
         />
         <div className="flex-column">
-          <div className="transactions-list-title">{desc}</div>
+          <Tooltip title={desc.length > 20 ? desc : ''} arrow>
+            <div className="transactions-list-title">{desc}</div>
+          </Tooltip>
           <div className="transactions-type">
             {getPaymentMethodText(paymentMethod)}
           </div>
@@ -45,9 +49,14 @@ export function TransactionsDetails({
           <div className="transaction-date">
             {dayjs(transactionDate).format('dddd, DD/MM/YYYY')}
           </div>
-          <div className={'transaction-price ' + movement}>
-            {getArithmeticOperator(movement) + 'R$ ' + value}
-          </div>
+          <Tooltip
+            title={value.toString().length > 10 ? `R$ ${value}` : ''}
+            arrow
+          >
+            <div className={'transaction-price ' + movement}>
+              {getArithmeticOperator(movement) + 'R$ ' + value}
+            </div>
+          </Tooltip>
         </div>
         <div className="transaction-edit">
           <Button

@@ -33,6 +33,10 @@
   .transactions-list-title {
     color: #28262B;
     font-size: 16px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 36vw;
   }
 
   .transactions-type {

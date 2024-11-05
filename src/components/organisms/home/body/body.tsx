@@ -45,14 +45,12 @@ export function Body() {
   const [totalValue, setTotalValue] = useState<string>('----');
   useEffect(() => {
     const totalIncoming = transactions?.reduce((acc, transaction) => {
-      return transaction.movement === 'incoming' &&
-        transaction.establishmentType !== ESTABLISHMENT_TYPE_SAVE
+      return transaction.movement === 'incoming'
         ? acc + transaction.value
         : acc;
     }, 0);
     const totalOutgoing = transactions?.reduce((acc, transaction) => {
-      return transaction.movement === 'outgoing' &&
-        transaction.establishmentType !== ESTABLISHMENT_TYPE_SAVE
+      return transaction.movement === 'outgoing'
         ? acc + transaction.value
         : acc;
     }, 0);

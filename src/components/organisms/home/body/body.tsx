@@ -9,86 +9,53 @@ import { Transitions } from '@/components/organisms/dashboard/body/transitions/t
 import { ESTABLISHMENT_TYPE_SAVE } from '@/components/organisms/modal-transaction/constants';
 import { useTransactionContext } from '@/components/organisms/providers/transaction-context';
 
-type financialDashboard = {
-  icon: string;
-  textTitle: string;
-  textValue: string;
-  financialHistory: string;
-};
-
 export function Body() {
   const { transactions } = useTransactionContext();
   const financialHistoryLastMouth = 'Relação desde o inicio';
-  const [financialDashboards, setFinancialDashboards] = useState<
-    financialDashboard[]
-  >([
+  const [visibleValues, setVisibleValues] = useState<boolean>(true);
+
+  const { totalIncoming, totalOutgoing, totalSaved } = transactions?.reduce(
+    (acc, transaction) => {
+      if (transaction.movement === 'incoming') {
+        acc.totalIncoming += transaction.value;
+        if (transaction.establishmentType === ESTABLISHMENT_TYPE_SAVE) {
+          acc.totalSaved += transaction.value;
+        }
+      } else if (transaction.movement === 'outgoing') {
+        acc.totalOutgoing += transaction.value;
+        if (transaction.establishmentType === ESTABLISHMENT_TYPE_SAVE) {
+          acc.totalSaved -= transaction.value;
+        }
+      }
+      return acc;
+    },
+    { totalIncoming: 0, totalOutgoing: 0, totalSaved: 0 }
+  );
+
+  const financialDashboards = [
     {
       icon: 'indicador_card_Icon_up',
       textTitle: 'Entradas',
-      textValue: '----',
+      textValue: totalIncoming?.toFixed(2) || '0',
       financialHistory: financialHistoryLastMouth,
     },
     {
       icon: 'indicador_card_Icon_low',
       textTitle: 'Saídas',
-      textValue: '----',
+      textValue: totalOutgoing?.toFixed(2) || '0',
       financialHistory: financialHistoryLastMouth,
     },
     {
       icon: 'indicador_card_Icon_pig',
       textTitle: 'Total guardado',
-      textValue: '----',
+      textValue: totalSaved?.toFixed(2) || '0',
       financialHistory: '',
     },
-  ]);
-  const [visibleValues, setVisibleValues] = useState<boolean>(true);
-  const [totalValue, setTotalValue] = useState<string>('----');
-  useEffect(() => {
-    const totalIncoming = transactions?.reduce((acc, transaction) => {
-      return transaction.movement === 'incoming'
-        ? acc + transaction.value
-        : acc;
-    }, 0);
-    const totalOutgoing = transactions?.reduce((acc, transaction) => {
-      return transaction.movement === 'outgoing'
-        ? acc + transaction.value
-        : acc;
-    }, 0);
+  ];
 
-    const totalSaved = transactions?.reduce((acc, transaction) => {
-      return transaction.establishmentType === ESTABLISHMENT_TYPE_SAVE
-        ? acc +
-            (transaction.movement === 'incoming'
-              ? transaction.value
-              : -transaction.value)
-        : acc;
-    }, 0);
+  const totalValue =
+    'R$ ' + ((totalIncoming || 0) - (totalOutgoing || 0)).toFixed(2);
 
-    setFinancialDashboards([
-      {
-        icon: 'indicador_card_Icon_up',
-        textTitle: 'Entradas',
-        textValue: totalIncoming?.toFixed(2) || '0',
-        financialHistory: financialHistoryLastMouth,
-      },
-      {
-        icon: 'indicador_card_Icon_low',
-        textTitle: 'Saídas',
-        textValue: totalOutgoing?.toFixed(2) || '0',
-        financialHistory: financialHistoryLastMouth,
-      },
-      {
-        icon: 'indicador_card_Icon_pig',
-        textTitle: 'Total guardado',
-        textValue: totalSaved?.toFixed(2) || '0',
-        financialHistory: '',
-      },
-    ]);
-
-    setTotalValue(
-      'R$ ' + ((totalIncoming || 0) - (totalOutgoing || 0)).toFixed(2)
-    );
-  }, [transactions]);
   const addClassInvisible = () => {
     setVisibleValues(!visibleValues);
   };

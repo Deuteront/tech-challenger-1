@@ -51,14 +51,18 @@ export function Body() {
         : acc;
     }, 0);
     const totalOutgoing = transactions?.reduce((acc, transaction) => {
-      return transaction.movement === 'outgoing'
+      return transaction.movement === 'outgoing' &&
+        transaction.establishmentType !== ESTABLISHMENT_TYPE_SAVE
         ? acc + transaction.value
         : acc;
     }, 0);
 
     const totalSaved = transactions?.reduce((acc, transaction) => {
       return transaction.establishmentType === ESTABLISHMENT_TYPE_SAVE
-        ? acc + transaction.value
+        ? acc +
+            (transaction.movement === 'incoming'
+              ? transaction.value
+              : -transaction.value)
         : acc;
     }, 0);
 
